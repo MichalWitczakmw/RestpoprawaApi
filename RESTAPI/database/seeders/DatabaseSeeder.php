@@ -7,7 +7,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call([
+        $this->call(class: [
            PEOPLE::class
         ]);
     }
