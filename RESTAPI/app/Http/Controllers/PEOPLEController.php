@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\PEOPLE;
 use App\Http\Requests\UpdatePEOPLERequest;
+use App\Http\Requests\PEOPLEPostRequest;
+use GuzzleHttp\Psr7\Request;
+
 class PEOPLEController extends Controller
 {
 
@@ -11,20 +14,22 @@ class PEOPLEController extends Controller
     {
         return PEOPLE::all();
     }
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return PEOPLE::create($request->all());
     }
-    public function show(PEOPLE $PEOPLE)
+    public function show(PEOPLE $id)
     {
-        //
+        return PEOPLE::find($id);
     }
-    public function update(UpdatePEOPLERequest $request, PEOPLE $PEOPLE)
+    public function update(UpdatePEOPLERequest $request, PEOPLE $id,$PEOPLE)
     {
-        //
+        $PEOPLE = PEOPLE::find($id);
+        $PEOPLE = update($request->all());
+        return $PEOPLE;
     }
-    public function destroy(PEOPLE $PEOPLE)
+    public function delete(PEOPLE $id)
     {
-        //
+        return PEOPLE::deleted($id);
     }
 }

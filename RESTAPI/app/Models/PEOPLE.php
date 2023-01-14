@@ -8,4 +8,10 @@ use App\Database\factories\PEOPLEFatory;
 class PEOPLE extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'Name',
+        'LastName',
+        'street',
+        'Country',
+    ];
 }
